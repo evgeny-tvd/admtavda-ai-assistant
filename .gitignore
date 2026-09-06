@@ -1,0 +1,18 @@
+#Виртуальное окружение python
+venv/
+.venv/
+
+
+#Кэш Python
+__pycache__/
+*.pyc
+
+
+#Секреты - никогда в git!
+.env
+
+
+#Редакторы и ОС
+.idea/
+.vscode
+.DS_Store
