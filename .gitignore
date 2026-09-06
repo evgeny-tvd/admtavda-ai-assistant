@@ -1,18 +1,15 @@
-#Виртуальное окружение python
+# Виртуальное окружение Python
 venv/
 .venv/
 
-
-#Кэш Python
+# Кэш Python
 __pycache__/
 *.pyc
 
-
-#Секреты - никогда в git!
+# Секреты — никогда в git!
 .env
 
-
-#Редакторы и ОС
+# Редакторы и ОС
 .idea/
-.vscode
+.vscode/
 .DS_Store
