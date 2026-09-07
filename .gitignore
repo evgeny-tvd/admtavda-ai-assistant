@@ -14,5 +14,5 @@ __pycache__/
 .vscode/
 .DS_Store
 
-#Node.js
-node_modules
+# Node.js
+node_modules/
