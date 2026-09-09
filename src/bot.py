@@ -37,7 +37,7 @@ def ask_gigachat(question: str) -> str:
     except Exception as e:
         print(f"GigaChat error: {e}", file=sys.stderr)
         return "Сервис временно недоступен. Попробуйте позже."
-    
+
 
 @dp.message_created(F.message.body.text)
 async def handle_message(event: MessageCreated):
@@ -61,4 +61,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    
