@@ -35,7 +35,7 @@ def ask_gigachat(question: str) -> str:
         response = giga.chat.create(chat)
         return response.messages[0].content[0].text
     except Exception as e:
-        print(f"GigaChat error: {e}, file=sys.stderr")
+        print(f"GigaChat error: {e}", file=sys.stderr)
         return "Сервис временно недоступен. Попробуйте позже."
     
 
