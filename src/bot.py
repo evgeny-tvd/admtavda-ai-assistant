@@ -1,6 +1,7 @@
 import asyncio
 import logging
 import os
+import sys
 
 from dotenv import load_dotenv
 from maxapi import Bot, Dispatcher, F
@@ -23,7 +24,7 @@ SYSTEM_PROMPT = (
 )
 
 
-def ask_gigachat(question:str) -> str:
+def ask_gigachat(question: str) -> str:
     chat = ChatCompletionRequest(
         messages=[
             ChatMessage(role="system", content=SYSTEM_PROMPT),
@@ -33,7 +34,8 @@ def ask_gigachat(question:str) -> str:
     try:
         response = giga.chat.create(chat)
         return response.messages[0].content[0].text
-    except Exception:
+    except Exception as e:
+        print(f"GigaChat error: {e}, file=sys.stderr")
         return "Сервис временно недоступен. Попробуйте позже."
     
 
