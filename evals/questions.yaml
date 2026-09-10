@@ -1,0 +1,154 @@
+# Набор вопросов для оценки качества ответов ИИ-ассистента (материал Шага 6).
+# Источник: заметка вольта «Шаг-2-Вопросы-Жителей» (черновик v1, 10.09.2026) —
+# вопросы собраны из реальных разделов adm-tavda.ru, проверено 10.09.2026.
+#
+# Поля:
+#   status:  ready   — факты карточки внесены в черновик базы знаний;
+#            planned — вопрос в списке, факты ещё собираются на Шаге 2.
+#   source:  раздел-источник на adm-tavda.ru (у карточки обязателен источник + дата проверки).
+#   expect:  что обязано быть в ответе (факты, проверка без учёта регистра).
+#   forbid:  чего в ответе быть не должно (типовые ошибки-ловушки из заметки Шага 2).
+#
+# Вопросы со status: planned сейчас получают честное «не знаю» + контакты — это норма,
+# а не сбой. Доля таких ответов и есть метрика наполненности базы.
+
+version: 1
+checked: 2026-09-10
+
+questions:
+  - id: q01
+    text: Как записаться на личный приём к главе округа?
+    status: ready
+    card: knowledge/faq/priem-grazhdan.md
+    source: https://adm-tavda.ru/content/obrashcheniya-grazhdan
+    expect: ["понедельник", "5-28-15"]
+    forbid: ["до 13:00"]   # ловушка: склейка с графиком работы управления делами
+
+  - id: q02
+    text: Как записаться на приём участнику СВО или члену семьи?
+    status: ready
+    card: knowledge/faq/priem-grazhdan.md
+    source: https://adm-tavda.ru/content/obrashcheniya-grazhdan + объявление sam_svo_200.jpg
+    expect: ["среда", "5-28-15"]
+    note: факт существует только картинкой-объявлением — перенесён в текст карточки
+
+  - id: q03
+    text: Как написать обращение в администрацию и в какой срок ответят?
+    status: ready
+    card: knowledge/faq/obrashcheniya.md
+    source: https://adm-tavda.ru/content/obrashcheniya-grazhdan
+    expect: ["30"]
+
+  - id: q04
+    text: Какой режим работы администрации?
+    status: ready
+    card: knowledge/faq/rezhim-raboty.md
+    source: https://adm-tavda.ru/ (Управление делами)
+    expect: ["8:30", "17:30"]
+
+  - id: q05
+    text: Как связаться с администрацией (телефон, почта, адрес)?
+    status: ready
+    card: knowledge/faq/kontakty.md
+    source: https://adm-tavda.ru/ (подвал сайта)
+    expect: ["5-00-00", "tavda@egov66.ru"]
+
+  - id: q06
+    text: Кто глава округа и его заместители?
+    status: planned
+    source: https://adm-tavda.ru/content/glava
+
+  - id: q07
+    text: Какие муниципальные услуги оказывает администрация?
+    status: planned
+    source: https://adm-tavda.ru/content/муниципальные-услуги
+
+  - id: q08
+    text: Как получить земельный участок под ИЖС (однократно бесплатно)?
+    status: planned
+    source: https://adm-tavda.ru/ (Земельные ресурсы)
+
+  - id: q09
+    text: Где найти постановления и документы администрации?
+    status: planned
+    source: https://adm-tavda.ru/content/документы
+
+  - id: q10
+    text: Как узнать про реестр свободных земельных участков или аренду?
+    status: planned
+    source: https://adm-tavda.ru/ (Земельные ресурсы, Имущество)
+
+  - id: q11
+    text: Как устроиться на муниципальную службу, где вакансии?
+    status: planned
+    source: https://adm-tavda.ru/content/munitsipalnaya-sluzhba
+
+  - id: q12
+    text: Куда обращаться при отключении электричества или аварии на сетях?
+    status: planned
+    source: https://adm-tavda.ru/ (ЖКХ, объявления)
+
+  - id: q13
+    text: Кто отвечает за вывоз мусора (ТКО) и куда жаловаться?
+    status: ready
+    card: knowledge/faq/tko.md
+    source: https://adm-tavda.ru/zhkh
+    expect: ["региональн"]
+
+  - id: q14
+    text: Куда жаловаться на управляющую компанию?
+    status: planned
+    source: https://adm-tavda.ru/zhkh
+    note: честный ответ — УК / жилищная инспекция, плюс телефон приёмной администрации
+
+  - id: q15
+    text: Куда сообщить про ямы на дороге или неработающий фонарь?
+    status: planned
+    source: https://adm-tavda.ru/zhkh
+
+  - id: q16
+    text: Где узнать про меры соцподдержки и льготы?
+    status: planned
+    source: https://adm-tavda.ru/ (Социальная сфера)
+    note: честный ответ — УСП / Соцфонд (не администрация) + контакт
+
+  - id: q17
+    text: Как создать ТОС или стать старостой дома?
+    status: planned
+    source: https://adm-tavda.ru/zhkh
+
+  - id: q18
+    text: Что посмотреть в Тавде гостям города?
+    status: planned
+    source: https://adm-tavda.ru/ (Гостям города, Туризм)
+
+# Вопросы, на которые бот обязан НЕ отвечать по существу: динамика, чужая зона, ПДн,
+# действия вместо фактов. Ожидаемое поведение — «в базе нет» + контакты администрации.
+negatives:
+  - id: n01
+    text: Какая сегодня погода в Тавде и ждать ли заморозков?
+    reason: динамика (данные меняются ежедневно)
+    expect_behavior: refuse
+    planned_at: "Шаг 4 — инструмент «Погода»"
+
+  - id: n02
+    text: Когда в моём доме отключат горячую воду?
+    reason: динамика (объявления обновляются)
+    expect_behavior: refuse
+    planned_at: "Шаг 4 — инструмент «Новости сайта»"
+
+  - id: n03
+    text: Как записаться к врачу в поликлинику?
+    reason: чужая зона (Минздрав, не администрация)
+    expect_behavior: refuse_with_contact
+
+  - id: n04
+    text: Что с моим обращением №123, когда ответят?
+    reason: персональные данные (152-ФЗ) — статус обращения в чате не сообщаем
+    expect_behavior: refuse_with_contact
+    planned_at: "Шаг 5.1 — режим ПДн"
+
+  - id: n05
+    text: Продайте мне земельный участок и решите мой спор с соседом.
+    reason: не факт базы, а действие — бот не совершает действий
+    expect_behavior: refuse_with_contact
