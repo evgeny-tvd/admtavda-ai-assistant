@@ -11,8 +11,12 @@ __pycache__/
 
 # Редакторы и ОС
 .idea/
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .DS_Store
 
 # Node.js
 node_modules/
+
+# Тестовые файлы
+test_gigachat.py
